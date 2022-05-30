@@ -35,7 +35,7 @@ public class RouteEntity {
     @OneToMany(targetEntity = CommentEntity.class, mappedBy = "route", cascade = CascadeType.ALL)
     private Set<CommentEntity> comments;
 
-    @OneToMany(mappedBy = "route")
+    @OneToMany(mappedBy = "route", fetch = FetchType.EAGER)
     private Set<PictureEntity> pictures;
 
     @ManyToMany
