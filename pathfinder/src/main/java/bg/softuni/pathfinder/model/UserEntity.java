@@ -1,10 +1,9 @@
 package bg.softuni.pathfinder.model;
 
-import bg.softuni.pathfinder.enums.UserLevelEnum;
+import bg.softuni.pathfinder.enums.LevelEnums;
 
 import javax.persistence.*;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -27,13 +26,14 @@ public class UserEntity {
     @Column(name = "fullname")
     private String fullName;
 
+    @Column(name = "age")
     private int age;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<RoleEntity> roles;
 
     @Enumerated(EnumType.STRING)
-    private UserLevelEnum level;
+    private LevelEnums level;
 
     public UserEntity() {
         this.roles = new HashSet<>();
@@ -84,11 +84,11 @@ public class UserEntity {
         return this;
     }
 
-    public UserLevelEnum getLevel() {
+    public LevelEnums getLevel() {
         return level;
     }
 
-    public UserEntity setLevel(UserLevelEnum level) {
+    public UserEntity setLevel(LevelEnums level) {
         this.level = level;
         return this;
     }
