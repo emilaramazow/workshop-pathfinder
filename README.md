@@ -3,7 +3,10 @@ Pathfinder is an MVC application develop during Software University (Spring Fund
 
 This is a Spring MVC application that:
 
-Uses MySQL Database
-Uses multiple layers: Database layer, Repository layer, Service Layer, Web layer
-Uses the Thymeleaf template engine to display views
-Uses HTML, CSS & Bootstrap
+1. Uses MySQL Database and these tables: 
+
+<img width="826" alt="Screenshot 2022-05-30 at 17 17 46" src="https://user-images.githubusercontent.com/88932265/171011030-e5448c00-c986-4550-ac36-0ac9ce5a818f.png">
+
+2. Uses multiple layers: Database layer, Repository layer, Service Layer, Web layer
+3. Uses the Thymeleaf template engine to display views
+4. Uses HTML, CSS & Bootstrap
