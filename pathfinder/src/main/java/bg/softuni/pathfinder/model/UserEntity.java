@@ -111,17 +111,4 @@ public class UserEntity {
         return this;
     }
 
-    @Override
-    public String toString() {
-        return "UserEntity{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", fullName='" + fullName + '\'' +
-                ", age=" + age +
-                ", roles=" + roles +
-                ", level=" + level +
-                '}';
-    }
 }
