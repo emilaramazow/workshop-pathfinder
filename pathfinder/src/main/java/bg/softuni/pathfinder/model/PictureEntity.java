@@ -19,7 +19,7 @@ public class PictureEntity {
     @ManyToOne
     private UserEntity author;
 
-    @OneToOne(targetEntity = RouteEntity.class, mappedBy = "header")
+    @ManyToOne
     private RouteEntity route;
 
     public PictureEntity() {

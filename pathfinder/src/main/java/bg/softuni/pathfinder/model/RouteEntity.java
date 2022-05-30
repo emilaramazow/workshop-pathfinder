@@ -14,6 +14,8 @@ public class RouteEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(columnDefinition = "TEXT")
+    private String description;
     @Lob
     @Column(name = "gpx_coordinates")
     private String gpxCoordinates;
@@ -33,8 +35,8 @@ public class RouteEntity {
     @OneToMany(targetEntity = CommentEntity.class, mappedBy = "route", cascade = CascadeType.ALL)
     private Set<CommentEntity> comments;
 
-    @OneToOne
-    private PictureEntity header;
+    @OneToMany(mappedBy = "route")
+    private Set<PictureEntity> pictures;
 
     @ManyToMany
     private Set<CategoryEntity> categories;
@@ -108,12 +110,12 @@ public class RouteEntity {
         return this;
     }
 
-    public PictureEntity getHeader() {
-        return header;
+    public Set<PictureEntity> getPictures() {
+        return pictures;
     }
 
-    public RouteEntity setHeader(PictureEntity header) {
-        this.header = header;
+    public RouteEntity setPictures(Set<PictureEntity> pictures) {
+        this.pictures = pictures;
         return this;
     }
 
