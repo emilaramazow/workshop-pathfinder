@@ -1,6 +1,6 @@
 package bg.softuni.pathfinder.model;
 
-import bg.softuni.pathfinder.enums.LevelEnums;
+import bg.softuni.pathfinder.enums.LevelEnum;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -33,7 +33,7 @@ public class UserEntity {
     private Set<RoleEntity> roles;
 
     @Enumerated(EnumType.STRING)
-    private LevelEnums level;
+    private LevelEnum level;
 
     public UserEntity() {
         this.roles = new HashSet<>();
@@ -84,11 +84,11 @@ public class UserEntity {
         return this;
     }
 
-    public LevelEnums getLevel() {
+    public LevelEnum getLevel() {
         return level;
     }
 
-    public UserEntity setLevel(LevelEnums level) {
+    public UserEntity setLevel(LevelEnum level) {
         this.level = level;
         return this;
     }

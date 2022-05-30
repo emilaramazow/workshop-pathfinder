@@ -1,6 +1,6 @@
 package bg.softuni.pathfinder.enums;
 
-public enum LevelEnums {
+public enum LevelEnum {
 
     BEGINNER, INTERMEDIATE, ADVANCED
 
