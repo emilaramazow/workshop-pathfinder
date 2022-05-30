@@ -13,6 +13,7 @@ public class RoleEntity {
     private Long id;
 
 
+    @Column(unique = true)
     @Enumerated(EnumType.STRING)
     private UserRolesEnum name;
 
