@@ -14,10 +14,11 @@
     <div class="d-flex justify-content-center ">
         <div class="row g-3">
             <form
+                    class="registration-form"
                     th:action="@{/register}"
                     th:method="post"
-                    th:object="${userRegistrationDTO}"
-                    >
+<!--                    th:object="${userRegistrationDTO}"-->
+            >
                 <div>
                     <div class="col-auto">
                         <label for="inputUsername" class="col-form-label ">Username</label>
@@ -26,6 +27,7 @@
                         <input name="username"
 
                                th:field="*{username}"
+                               th:errorclass="is-invalid"
 
                                required minlength="5" maxlength="20"
                                type="text"
@@ -49,6 +51,7 @@
                         <input name="fullname"
 
                                th:field="*{fullname}"
+                               th:errorclass="is-invalid"
 
                                required minlength="5" maxlength="20"
                                type="text"
@@ -72,7 +75,8 @@
                                id="inputEmail"
                                class="form-control"
                                aria-describedby="emailHelpInline">
-                        <small id="emailError"
+                        <small th:if="${#fields.hasErrors('email')}"
+                               id="emailError"
                                class="invalid-feedback  form-text bg-danger rounded">Must be valid email</small>
                     </div>
                 </div>
@@ -146,4 +150,3 @@
     </div>
 </footer>
 </body>
-</html>

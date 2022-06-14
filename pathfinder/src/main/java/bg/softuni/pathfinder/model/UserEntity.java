@@ -39,6 +39,16 @@ public class UserEntity {
         this.roles = new HashSet<>();
     }
 
+    public UserEntity(String username, String password, String email, String fullName, int age) {
+        this();
+
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.fullName = fullName;
+        this.age = age;
+    }
+
     public Long getId() {
         return id;
     }

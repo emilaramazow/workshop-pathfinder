@@ -7,7 +7,7 @@ public class UserRegistrationDTO {
     @NotBlank
     @Size(min = 5, max = 20)
     private String username;
-    @NotNull
+    @NotBlank
     @Size(min = 5, max = 20)
     private String fullname;
     @NotNull
