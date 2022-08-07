@@ -15,15 +15,15 @@ import java.util.Set;
 @Setter
 public class Route extends BaseEntity{
 
+    @Column(unique = true, nullable = false)
+    private String name;
     @Column(columnDefinition = "TEXT")
     private String description;
     @Column(columnDefinition = "LONGTEXT")
     private String gpxCoordinates;
     @Enumerated(EnumType.STRING)
     private LevelEnum level;
-    @Column(unique = true, nullable = false)
-    private String name;
-    @Column
+    @Column(name = "video_url")
     private String videoURL;
 
     @ManyToOne
