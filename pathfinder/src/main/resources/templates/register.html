@@ -2,33 +2,36 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Pathfinder</title>
-    <th:block th:include="~{/fragments/head}" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/mobile.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+          integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+          integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+          crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+            integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+            crossorigin=""></script>
 </head>
 <body>
 <main class="p-5 align-content-center bg-blur my-register-div">
-
-    <th:block th:include="~{/fragments/header}" />
-
     <h1 class="border-bottom">Register</h1>
     <div class="d-flex justify-content-center ">
         <div class="row g-3">
             <form
-                    class="registration-form"
-                    th:action="@{/register}"
-                    th:method="post"
-<!--                    th:object="${userRegistrationDTO}"-->
-            >
+                    action="/"
+                    method="">
                 <div>
                     <div class="col-auto">
                         <label for="inputUsername" class="col-form-label ">Username</label>
                     </div>
                     <div class="col-auto">
                         <input name="username"
-
-                               th:field="*{username}"
-                               th:errorclass="is-invalid"
-
+                               
                                required minlength="5" maxlength="20"
                                type="text"
                                id="inputUsername"
@@ -49,10 +52,6 @@
                     </div>
                     <div class="col-auto">
                         <input name="fullname"
-
-                               th:field="*{fullname}"
-                               th:errorclass="is-invalid"
-
                                required minlength="5" maxlength="20"
                                type="text"
                                id="inputFullName"
@@ -69,14 +68,12 @@
                     </div>
                     <div class="col-auto">
                         <input name="email"
-                               th:field="*{email}"
-                               required
+								required
                                type="email"
                                id="inputEmail"
                                class="form-control"
                                aria-describedby="emailHelpInline">
-                        <small th:if="${#fields.hasErrors('email')}"
-                               id="emailError"
+                        <small id="emailError"
                                class="invalid-feedback  form-text bg-danger rounded">Must be valid email</small>
                     </div>
                 </div>
@@ -86,7 +83,6 @@
                     </div>
                     <div class="col-auto">
                         <input name="age" required
-                               th:field="*{age}"
                                type="number"
                                id="inputAge"
                                class="form-control"
@@ -102,8 +98,7 @@
                     </div>
                     <div class="col-auto">
                         <input name="password"
-                               th:field="*{password}"
-                               required minlength="5" maxlength="20"
+                                required minlength="5" maxlength="20"
                                type="password"
                                id="inputPassword"
                                class="form-control"
@@ -121,8 +116,7 @@
                     </div>
                     <div class="col-auto">
                         <input name="confirmPassword"
-                               th:field="*{confirmPassword}"
-                               required minlength="5" maxlength="20"
+                                required minlength="5" maxlength="20"
                                type="password"
                                id="inputConfirmPassword"
                                class="form-control"
@@ -150,3 +144,4 @@
     </div>
 </footer>
 </body>
+</html>
