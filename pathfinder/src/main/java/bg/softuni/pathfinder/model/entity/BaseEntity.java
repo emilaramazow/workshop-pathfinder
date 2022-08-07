@@ -1,23 +1,27 @@
 package bg.softuni.pathfinder.model.entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
+@NoArgsConstructor
+@Getter
+@Setter
 public abstract class BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public Long getId() {
-        return id;
-    }
+    // for uuid ->
+    // @Id
+    // @GeneratedValue(generator = "uuid")
+    // @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
 
-    public BaseEntity setId(Long id) {
-        this.id = id;
-        return this;
-    }
 }
