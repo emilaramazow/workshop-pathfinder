@@ -1,7 +1,6 @@
 package bg.softuni.pathfinder.service;
 
 import bg.softuni.pathfinder.model.service.UserServiceModel;
-import org.springframework.stereotype.Service;
 
 public interface UserService {
     void registerUser(UserServiceModel userServiceModel);
@@ -13,4 +12,6 @@ public interface UserService {
     void logout();
 
     UserServiceModel findById(Long id);
+
+    boolean isNameExists(String username);
 }
