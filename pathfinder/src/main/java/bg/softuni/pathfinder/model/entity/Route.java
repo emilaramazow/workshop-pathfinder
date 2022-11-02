@@ -28,7 +28,9 @@ public class Route extends BaseEntity{
 
     @ManyToOne
     private User author;
-    @ManyToMany
+    @OneToMany(mappedBy = "route", fetch = FetchType.EAGER)
+    private Set<Picture> pictures;
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Category> categories;
 
 }
