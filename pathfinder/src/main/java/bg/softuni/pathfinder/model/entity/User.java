@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.util.Set;
 
 @Entity
@@ -24,6 +25,7 @@ public class User extends BaseEntity{
     @Column
     private String email;
     @Column
+    @Min(10)
     private Integer age;
     @Enumerated(EnumType.STRING)
     private LevelEnum level;
