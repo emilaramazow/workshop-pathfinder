@@ -23,12 +23,10 @@ public class UserController {
 
     private final UserService userService;
     private final ModelMapper modelMapper;
-    private final CurrentUser currentUser;
 
-    public UserController(UserService userService, ModelMapper modelMapper, CurrentUser currentUser) {
+    public UserController(UserService userService, ModelMapper modelMapper) {
         this.userService = userService;
         this.modelMapper = modelMapper;
-        this.currentUser = currentUser;
     }
 
     @ModelAttribute
@@ -84,7 +82,7 @@ public class UserController {
 
         if (!bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("userLoginBindingModel", userLoginBindingModel)
-                    .addFlashAttribute("org.springframework.validation.BindingResult.userLoginBindingModel", bindingResult);
+                    .addFlashAttribute("org.springframework.validation.BindingResult.userRegisterBindingModel", bindingResult);
 
             return "redirect:login";
         }
@@ -101,14 +99,16 @@ public class UserController {
 
         }
 
-        loginUser(user.getId(), user.getUsername());
+        userService.loginUser(user.getId(), user.getUsername());
 
         return "redirect:/";
     }
 
-    private void loginUser(Long id, String username) {
-        currentUser.setUsername(username);
-        currentUser.setId(id);
+    @GetMapping("/logout")
+    public String logout() {
+        userService.logout();
+
+        return "redirect:/";
     }
 
 }
