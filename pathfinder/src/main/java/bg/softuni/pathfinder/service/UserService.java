@@ -11,4 +11,6 @@ public interface UserService {
     void loginUser(Long id, String username);
 
     void logout();
+
+    UserServiceModel findById(Long id);
 }
