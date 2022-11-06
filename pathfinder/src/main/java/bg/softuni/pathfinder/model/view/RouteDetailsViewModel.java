@@ -1,9 +1,7 @@
-package bg.softuni.pathfinder.model.service;
+package bg.softuni.pathfinder.model.view;
 
-import bg.softuni.pathfinder.enums.CategoryNameEnum;
 import bg.softuni.pathfinder.enums.LevelEnum;
 import bg.softuni.pathfinder.model.entity.Picture;
-import bg.softuni.pathfinder.model.entity.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,16 +11,13 @@ import java.util.Set;
 @NoArgsConstructor
 @Getter
 @Setter
-public class RouteServiceModel {
+public class RouteDetailsViewModel {
 
-    private Long id;
-    private String name;
-    private String description;
     private String gpxCoordinates;
+    private String description;
     private LevelEnum level;
+    private String name;
     private String videoURL;
-    private User author;
     private Set<Picture> pictures;
-    private Set<CategoryNameEnum> categories;
 
 }
