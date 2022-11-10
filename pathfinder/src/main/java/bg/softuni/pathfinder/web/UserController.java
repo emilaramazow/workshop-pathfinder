@@ -5,7 +5,6 @@ import bg.softuni.pathfinder.model.binding.UserRegisterBindingModel;
 import bg.softuni.pathfinder.model.service.UserServiceModel;
 import bg.softuni.pathfinder.model.view.UserViewModel;
 import bg.softuni.pathfinder.service.UserService;
-import bg.softuni.pathfinder.util.CurrentUser;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -61,10 +60,7 @@ public class UserController {
             return "redirect:register";
         }
 
-       boolean isNameExists = userService.isNameExists(userRegisterBindingModel.getUsername());
-        if (isNameExists) {
-            // TODO ... redirect with message
-        }
+        // TODO : existing user name with custom validator
 
         userService.registerUser(modelMapper.map(userRegisterBindingModel, UserServiceModel.class));
 
@@ -79,40 +75,6 @@ public class UserController {
         return "login";
     }
 
-    @PostMapping("/login")
-    public String loginConfirm(@Valid UserLoginBindingModel userLoginBindingModel,
-                               BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-
-        if (bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute("userLoginBindingModel", userLoginBindingModel)
-                    .addFlashAttribute("org.springframework.validation.BindingResult.userLoginBindingModel", bindingResult);
-
-            return "redirect:login";
-        }
-
-        UserServiceModel user = userService.findUserByUsernameAndPassword(userLoginBindingModel.getUsername(), userLoginBindingModel.getPassword());
-
-        if (user == null) {
-            redirectAttributes
-                    .addFlashAttribute("isExists", false)
-                    .addFlashAttribute("userLoginBindingModel", userLoginBindingModel)
-                    .addFlashAttribute("org.springframework.validation.BindingResult.userLoginBindingModel", bindingResult);
-
-            return "redirect:login";
-
-        }
-
-        userService.loginUser(user.getId(), user.getUsername());
-
-        return "redirect:/";
-    }
-
-    @GetMapping("/logout")
-    public String logout() {
-        userService.logout();
-
-        return "redirect:/";
-    }
 
     // ще работим с профила на потребителя като задаваме path variable ( {id} ) за да вземем ид-то на потребителя
     @GetMapping("/profile/{id}")

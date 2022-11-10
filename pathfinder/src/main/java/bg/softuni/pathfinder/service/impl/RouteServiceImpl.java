@@ -56,7 +56,8 @@ public class RouteServiceImpl implements RouteService {
     @Override
     public void addNewRoute(RouteServiceModel routeServiceModel) {
         Route route = modelMapper.map(routeServiceModel, Route.class);
-        route.setAuthor(userService.findCurrentLoginUserEntity());
+        //TODO : current suer
+       // route.setAuthor(userService.findCurrentLoginUserEntity());
 
         route.setCategories(routeServiceModel
                 .getCategories()

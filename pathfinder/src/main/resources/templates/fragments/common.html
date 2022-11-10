@@ -20,7 +20,7 @@
 <header th:fragment="navigation">
     <nav class="main-nav">
         <ul>
-            <th:block th:if="${@currentUser.id == null}">
+            <th:block >
                 <li>
                     <a href="/">Home</a>
                 </li>
@@ -34,7 +34,7 @@
                     <a href="/about">About</a>
                 </li>
             </th:block>
-            <th:block th:unless="${@currentUser.id == null}">
+            <th:block >
                 <li>
                     <a href="/routes/add">Add new route</a>
                 </li>
@@ -42,7 +42,8 @@
 
        <!--    подаване на id като path-variable ({id}) за да може динамично да прихване ид-то на текущия потребител
                 и текущото ид да е равно на ид-то от обекта (  (id = *{id})   )-->
-                    <a th:href="@{/users/profile/{id}(id = ${@currentUser.id})}">Profile</a>
+<!--                    <a th:href="@{/users/profile/{id}(id = ${@currentUser.id})}">Profile</a>-->
+                    <a href="#"> Profile </a>
                 </li>
                 <li>
                     <a href="/">Admin</a>

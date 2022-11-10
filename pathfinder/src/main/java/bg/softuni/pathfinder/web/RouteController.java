@@ -3,7 +3,6 @@ package bg.softuni.pathfinder.web;
 import bg.softuni.pathfinder.model.binding.RouteAddBindingModel;
 import bg.softuni.pathfinder.model.service.RouteServiceModel;
 import bg.softuni.pathfinder.service.RouteService;
-import bg.softuni.pathfinder.util.CurrentUser;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,12 +18,10 @@ import java.io.IOException;
 public class RouteController {
 
     private final RouteService routeService;
-    private final CurrentUser currentUser;
     private final ModelMapper modelMapper;
 
-    public RouteController(RouteService routeService, CurrentUser currentUser, ModelMapper modelMapper) {
+    public RouteController(RouteService routeService, ModelMapper modelMapper) {
         this.routeService = routeService;
-        this.currentUser = currentUser;
         this.modelMapper = modelMapper;
     }
 
@@ -52,9 +49,6 @@ public class RouteController {
 
     @GetMapping("/add")
     public String add() {
-        if (currentUser.getId() == null) {
-            return "redirect:/users/login";
-        }
 
         return "add-route";
     }
