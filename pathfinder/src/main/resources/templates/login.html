@@ -1,6 +1,6 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:fragment="head">
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Pathfinder</title>
@@ -41,13 +41,13 @@
                 </div>
                 <div>
                     <div class="col-auto">
-                        <label for="inputPassword" class="col-form-label ">Password</label>
+                        <label for="password" class="col-form-label ">Password</label>
                     </div>
                     <div class="col-auto">
                         <input type="password"
                                name="password"
                                required minlength="4" maxlength="20"
-                               id="inputPassword" class="form-control"
+                               id="password" class="form-control"
                                aria-describedby="passwordHelpInline">
                     </div>
                 </div>
@@ -59,12 +59,8 @@
 
     </div>
 </main>
-<footer class="footer bg-blur rounded">
-    <div class="container-fluid text-center">
-        <div class="h5 text-white">
-            &copy; Lucho, Chocho & Spring Advanced Students 2021. All rights reserved.
-        </div>
-    </div>
+<footer th:replace="fragments/common::footer" class="footer bg-blur rounded"> </footer>
+
 </footer>
 </body>
 </html>
