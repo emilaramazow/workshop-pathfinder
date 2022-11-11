@@ -23,7 +23,7 @@ public class PathfinderUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        var userEntity = userRepository
+        User userEntity = userRepository
                 .findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("User with email" + email + "was not found!"));
 
@@ -38,7 +38,7 @@ public class PathfinderUserDetailsService implements UserDetailsService {
                         .getRoles()
                         .stream()
                         .map(r -> new SimpleGrantedAuthority("ROLE_" + r.getRole().name()))
-                        .collect(Collectors.toSet());
+                        .collect(Collectors.toUnmodifiableSet());
 
 
         return new org.springframework.security.core.userdetails.User(

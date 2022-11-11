@@ -1,6 +1,5 @@
 package bg.softuni.pathfinder.web;
 
-import bg.softuni.pathfinder.model.binding.UserLoginBindingModel;
 import bg.softuni.pathfinder.model.binding.UserRegisterBindingModel;
 import bg.softuni.pathfinder.model.service.UserServiceModel;
 import bg.softuni.pathfinder.model.view.UserViewModel;
@@ -31,10 +30,6 @@ public class UserController {
         return new UserRegisterBindingModel();
     }
 
-    @ModelAttribute
-    public UserLoginBindingModel userLoginBindingModel() {
-        return new UserLoginBindingModel();
-    }
 
     @GetMapping("/register")
     public String register(Model model) {
@@ -65,14 +60,6 @@ public class UserController {
         userService.registerUser(modelMapper.map(userRegisterBindingModel, UserServiceModel.class));
 
         return "redirect:login";
-    }
-
-    @GetMapping("/login")
-    public String login(Model model) {
-
-        model.addAttribute("isExists", true);
-
-        return "login";
     }
 
 
