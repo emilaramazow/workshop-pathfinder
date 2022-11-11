@@ -1,18 +1,16 @@
 package bg.softuni.pathfinder.web;
 
 import bg.softuni.pathfinder.service.PictureService;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
+@AllArgsConstructor
 public class HomeController {
 
     private final PictureService pictureService;
-
-    public HomeController(PictureService pictureService) {
-        this.pictureService = pictureService;
-    }
 
     @GetMapping("/")
     public String index(Model model) {

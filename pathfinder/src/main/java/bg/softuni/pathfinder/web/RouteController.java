@@ -3,6 +3,7 @@ package bg.softuni.pathfinder.web;
 import bg.softuni.pathfinder.model.binding.RouteAddBindingModel;
 import bg.softuni.pathfinder.model.service.RouteServiceModel;
 import bg.softuni.pathfinder.service.RouteService;
+import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,16 +15,12 @@ import javax.validation.Valid;
 import java.io.IOException;
 
 @Controller
+@AllArgsConstructor
 @RequestMapping("/routes")
 public class RouteController {
 
     private final RouteService routeService;
     private final ModelMapper modelMapper;
-
-    public RouteController(RouteService routeService, ModelMapper modelMapper) {
-        this.routeService = routeService;
-        this.modelMapper = modelMapper;
-    }
 
     @ModelAttribute
     public RouteAddBindingModel routeAddBindingModel() {
