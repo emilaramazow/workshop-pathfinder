@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -28,9 +29,11 @@ public class Route extends BaseEntity{
 
     @ManyToOne
     private User author;
-    @OneToMany(mappedBy = "route", fetch = FetchType.EAGER)
-    private Set<Picture> pictures;
-    @ManyToMany(fetch = FetchType.EAGER)
-    private Set<Category> categories;
+    @OneToMany(mappedBy = "route", fetch = FetchType.LAZY)
+    private List<Picture> pictures;
+    @ManyToMany(fetch = FetchType.LAZY)
+    private List<Category> categories;
+    @OneToMany(mappedBy = "route", fetch = FetchType.LAZY)
+    private List<Comment> comments;
 
 }

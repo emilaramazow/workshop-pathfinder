@@ -1,6 +1,6 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:fragment="head">
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Pathfinder</title>
@@ -24,36 +24,30 @@
         <div class="row g-3 align-items-center">
 
             <form
-                    th:object="${userLoginBindingModel}"
                     th:action="@{/users/login}"
                     th:method="post">
                 <div>
                     <div class="col-auto">
-                        <label for="inputUsername" class="col-form-label ">Username</label>
+                        <label for="email" class="col-form-label ">Email</label>
                     </div>
-                    <h5 th:if="${!isExists}" class="bg-danger">Incorrect username or password!</h5>
                     <div class="col-auto">
                         <input type="text"
-                               th:field="*{username}"
-                               th:errorclass="'is-invalid' bg-danger"
+                               name="email"
                                required minlength="4" maxlength="20"
-                               id="inputUsername"
+                               id="email"
                                class="form-control"
                                aria-describedby="usernameHelpInline">
                     </div>
-                    <small class="invalid-feedback">
-                        <span class="bg-danger">Username is not correct!</span>
-                    </small>
                 </div>
                 <div>
                     <div class="col-auto">
-                        <label for="inputPassword" class="col-form-label ">Password</label>
+                        <label for="password" class="col-form-label ">Password</label>
                     </div>
                     <div class="col-auto">
                         <input type="password"
-                               th:field="*{password}"
+                               name="password"
                                required minlength="4" maxlength="20"
-                               id="inputPassword" class="form-control"
+                               id="password" class="form-control"
                                aria-describedby="passwordHelpInline">
                     </div>
                 </div>
@@ -65,12 +59,8 @@
 
     </div>
 </main>
-<footer class="footer bg-blur rounded">
-    <div class="container-fluid text-center">
-        <div class="h5 text-white">
-            &copy; Lucho, Chocho & Spring Advanced Students 2021. All rights reserved.
-        </div>
-    </div>
+<footer th:replace="fragments/common::footer" class="footer bg-blur rounded"> </footer>
+
 </footer>
 </body>
 </html>

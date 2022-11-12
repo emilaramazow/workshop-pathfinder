@@ -10,6 +10,7 @@ import bg.softuni.pathfinder.service.RouteService;
 import bg.softuni.pathfinder.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,6 +30,7 @@ public class RouteServiceImpl implements RouteService {
         this.modelMapper = modelMapper;
     }
 
+    @Transactional
     @Override
     public List<RouteViewModel> findAllRoutesView() {
         return routeRepository
@@ -56,17 +58,19 @@ public class RouteServiceImpl implements RouteService {
     @Override
     public void addNewRoute(RouteServiceModel routeServiceModel) {
         Route route = modelMapper.map(routeServiceModel, Route.class);
-        route.setAuthor(userService.findCurrentLoginUserEntity());
+        //TODO : current suer
+       // route.setAuthor(userService.findCurrentLoginUserEntity());
 
         route.setCategories(routeServiceModel
                 .getCategories()
                 .stream()
                 .map(categoryNameEnum -> categoryService.findCategoryByName(categoryNameEnum))
-                .collect(Collectors.toSet()));
+                .collect(Collectors.toList()));
 
         routeRepository.save(route);
     }
 
+    @Transactional
     @Override
     public RouteDetailsViewModel findRouteById(Long id) {
         return routeRepository
