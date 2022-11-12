@@ -1,12 +1,14 @@
 package bg.softuni.pathfinder.service.impl;
 
 import bg.softuni.pathfinder.model.entity.Comment;
+import bg.softuni.pathfinder.model.service.CommentServiceModel;
 import bg.softuni.pathfinder.model.view.CommentViewModel;
 import bg.softuni.pathfinder.repository.RouteRepository;
 import bg.softuni.pathfinder.service.CommentService;
 import bg.softuni.pathfinder.service.exceptions.ObjectNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,6 +19,7 @@ public class CommentServiceImpl implements CommentService {
 
     private final RouteRepository routeRepository;
 
+    @Transactional
     @Override
     public List<CommentViewModel> getComments(Long routeId) {
         var routeOpt = routeRepository.findById(routeId);
@@ -32,6 +35,11 @@ public class CommentServiceImpl implements CommentService {
                 .stream()
                 .map(this::mapAsComment)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public CommentViewModel createComment(CommentServiceModel commentServiceModel) {
+        throw new UnsupportedOperationException("NOT YET!");
     }
 
     // mapping method
