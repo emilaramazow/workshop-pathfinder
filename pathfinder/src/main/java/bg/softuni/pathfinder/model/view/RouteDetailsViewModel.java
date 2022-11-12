@@ -13,6 +13,7 @@ import java.util.Set;
 @Setter
 public class RouteDetailsViewModel {
 
+    private Long id;
     private String gpxCoordinates;
     private String description;
     private LevelEnum level;
