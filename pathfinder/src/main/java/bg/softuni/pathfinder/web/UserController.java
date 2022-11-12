@@ -55,6 +55,7 @@ public class UserController {
 
         // TODO : existing user name with custom validator
 
+
         userService.registerUser(modelMapper.map(userRegisterBindingModel, UserServiceModel.class));
 
         return "redirect:login";
