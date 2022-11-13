@@ -61,6 +61,8 @@ class PathfinderUserDetailsServiceTest {
     @Test
     void testUserFound() {
         // 1. Arrange
+        // с mockito.when все едно обучавам кухия обект да не е кух, а да връща някаква информация
+        // как да се държи, какво поведение да има
         Mockito.when(mockUserRepository.findByEmail(testUser.getEmail()))
                 .thenReturn(Optional.of(testUser));
 
