@@ -4,10 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -19,7 +16,8 @@ public class Message extends BaseEntity{
 
     @Column(nullable = false)
     private LocalDateTime dateTime;
-    @Column(nullable = false, columnDefinition = "LONGTEXT")
+    @Lob
+    @Column(nullable = false)
     private String textContent;
 
     @ManyToOne

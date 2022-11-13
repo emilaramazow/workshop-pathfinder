@@ -14,13 +14,13 @@ import java.util.Set;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Route extends BaseEntity{
+public class Route extends BaseEntity {
 
     @Column(unique = true, nullable = false)
     private String name;
-    @Column(columnDefinition = "TEXT")
+    @Lob
     private String description;
-    @Column(columnDefinition = "LONGTEXT")
+    @Lob
     private String gpxCoordinates;
     @Enumerated(EnumType.STRING)
     private LevelEnum level;
@@ -33,7 +33,7 @@ public class Route extends BaseEntity{
     private List<Picture> pictures;
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Category> categories;
-    @OneToMany(mappedBy = "route", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "route", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Comment> comments;
 
 }
