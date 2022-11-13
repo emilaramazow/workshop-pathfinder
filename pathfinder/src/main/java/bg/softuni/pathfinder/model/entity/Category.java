@@ -12,11 +12,11 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Category extends BaseEntity{
+public class Category extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private CategoryNameEnum name;
-    @Column(columnDefinition = "TEXT")
+    @Lob
     private String description;
 
 }
