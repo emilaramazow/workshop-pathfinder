@@ -5,6 +5,8 @@ import bg.softuni.pathfinder.model.service.RouteServiceModel;
 import bg.softuni.pathfinder.service.RouteService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,6 +21,7 @@ import java.io.IOException;
 @RequestMapping("/routes")
 public class RouteController {
 
+    private static Logger LOGGER = LoggerFactory.getLogger(RouteController.class);
     private final RouteService routeService;
     private final ModelMapper modelMapper;
 
@@ -29,6 +32,8 @@ public class RouteController {
 
     @GetMapping("/all")
     public String allRoutes(Model model) {
+
+        LOGGER.debug("All routes were requested...");
 
         // подаваме нашите пътища към темплейта с Model
         model.addAttribute("routes", routeService.findAllRoutesView());
