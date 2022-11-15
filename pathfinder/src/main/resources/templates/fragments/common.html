@@ -45,12 +45,14 @@
                 </li>
                 <li>
 
-       <!--    подаване на id като path-variable ({id}) за да може динамично да прихване ид-то на текущия потребител
-                и текущото ид да е равно на ид-то от обекта (  (id = *{id})   )-->
-<!--                    <a th:href="@{/users/profile/{id}(id = ${@currentUser.id})}">Profile</a>-->
-                    <a href="/"> Profile </a>
+                    <!--    подаване на id като path-variable ({id}) за да може динамично да прихване ид-то на текущия потребител
+                             и текущото ид да е равно на ид-то от обекта (  (id = *{id})   )-->
+                    <!--                    <a th:href="@{/users/profile/{id}(id = ${@currentUser.id})}">Profile</a>-->
+
+                    <a th:href="@{/users/profile}"> Profile </a>
                 </li>
-                <li>
+                <!--                само потребител с роля админ може да вижда бутон админ след логване-->
+                <li sec:authorize="hasRole('ADMIN')">
                     <a href="/">Admin</a>
                 </li>
                 <li>
