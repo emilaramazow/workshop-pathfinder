@@ -7,8 +7,8 @@ import lombok.Setter;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-@Getter
-@Setter
+//@Getter
+//@Setter
 @NoArgsConstructor
 public class NewCommentBindingModel {
 
@@ -16,4 +16,12 @@ public class NewCommentBindingModel {
     @Size(min = 10)
     private String message;
 
+    public String getMessage() {
+        return message;
+    }
+
+    public NewCommentBindingModel setMessage(String message) {
+        this.message = message;
+        return this;
+    }
 }

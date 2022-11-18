@@ -48,6 +48,8 @@ public class CommentRestController {
         CommentServiceModel commentServiceModel = modelMapper
                 .map(newCommentBindingModel, CommentServiceModel.class);
 
+        commentServiceModel.setCreator(principal.getUsername());
+
         // сетваме ид-то, защото моделмапър-a няма да се справи с ид-то, защото го няма в NewCommentBindingModel
         commentServiceModel.setRouteId(routeId);
 
