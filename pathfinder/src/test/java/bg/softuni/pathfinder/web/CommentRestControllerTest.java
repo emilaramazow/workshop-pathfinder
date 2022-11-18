@@ -32,7 +32,7 @@ import java.util.List;
 
 // INTEGRATION TESTING  ->  вдигаме spring приложение с in-memory db (h2) за да може да се правят тестовете
 
-@WithMockUser("emil")
+@WithMockUser("emil@example.com")
 @SpringBootTest
 @AutoConfigureMockMvc
 class CommentRestControllerTest {
@@ -57,6 +57,7 @@ class CommentRestControllerTest {
 
         testUser.setUsername("emil");
         testUser.setFullName("emil emilov");
+        testUser.setEmail("emil@example.com");
         testUser.setPassword("password");
 
         testUser = userRepository.save(testUser);
