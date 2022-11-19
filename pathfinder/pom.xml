@@ -10,7 +10,6 @@
     </parent>
     <groupId>bg.softuni</groupId>
     <artifactId>pathfinder</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>pathfinder</name>
     <description>pathfinder</description>
     <properties>
