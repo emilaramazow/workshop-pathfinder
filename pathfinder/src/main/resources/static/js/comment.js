@@ -1,6 +1,6 @@
 const routeId = document.getElementById('routeId').value
 
-const commentsContainer = document.getElementById('commentCtnr')
+const commentsContainer = document.getElementById('commentCntr')
 
 const allComments = []
 
