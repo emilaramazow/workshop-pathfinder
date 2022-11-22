@@ -7,3 +7,4 @@ Tech stack :
 2. Uses multiple layers: Database layer, Repository layer, Service Layer, Web layer
 3. Uses the Thymeleaf template engine to display views
 4. Uses HTML, CSS & Bootstrap
+5. Lombok

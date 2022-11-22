@@ -1,33 +1,30 @@
 package bg.softuni.pathfinder.web;
 
-import bg.softuni.pathfinder.model.RouteEntity;
-import bg.softuni.pathfinder.service.RouteService;
-import org.springframework.beans.factory.annotation.Autowired;
+import bg.softuni.pathfinder.service.PictureService;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import javax.transaction.Transactional;
-import java.util.List;
-
 @Controller
+@AllArgsConstructor
 public class HomeController {
 
-    private final RouteService routeService;
-
-    @Autowired
-    public HomeController(RouteService routeService) {
-        this.routeService = routeService;
-    }
-
+    private final PictureService pictureService;
 
     @GetMapping("/")
-    public String home(Model model) {
-        List<RouteEntity> route = routeService.getMostCommented();
+    public String index(Model model) {
 
-        model.addAttribute("mostCommented", route.get(0));
+        // няма да мапваме, а само ще вземем URL-те
+        model.addAttribute("pictures",
+                pictureService.findAllUrls());
 
         return "index";
+    }
+
+    @GetMapping("/about")
+    public String about() {
+        return "about";
     }
 
 }

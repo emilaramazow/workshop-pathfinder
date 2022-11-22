@@ -1,20 +1,17 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <title>Pathfinder</title>
-    <th:block th:include="~{/fragments/head}" />
-</head>
+<head th:replace="fragments/common::head"></head>
 <body>
 <div class="wrapper">
     <!-- Navigation -->
-<th:block th:include="~{fragments/header}" />
+    <header th:replace="/fragments/common::navigation"></header>
     <!-- Top Container -->
     <section class="top-container">
         <div class="showcase">
             <h1>Find amazing routes</h1>
             <p>Sick of staying at home, sick of limitations? Be free! Find a route and enjoy nature!</p>
-            <a href="/routes" class="btn">To routes</a>
+            <a href="/routes/all" class="btn">To routes</a>
         </div>
         <div class="top-box top-box-a">
             <h4>Времето в София</h4>
@@ -62,27 +59,26 @@
 
     <!-- Info Section -->
     <section class="road">
-        <img th:src="${mostCommented.pictures[0].url}" alt="">
+        <img src="/images/most-commented.jpg" alt="">
         <div>
-            <h2>The most commented route: <span th:text="${mostCommented.name}"></span></h2>
+            <h2>The most commented route</h2>
             <p>Read more about the most commented route and do not miss the
                 chance to visit it and give your opinion to help other users.</p>
-            <!-- Generate link to route -->
-            <a th:href="@{/routes/details/:id(id=${mostCommented.id})}" class="btn">Learn More</a>
+            <a href="/" class="btn">Learn More</a>
         </div>
     </section>
 
     <!-- Portfolio -->
     <section class="gallery">
-        <img src="http://res.cloudinary.com/ch-cloud/image/upload/v1630583467/koncyanx4gqwzt9vxgx4.jpg" width="200px" height="200px" alt="">
-        <img src="http://res.cloudinary.com/ch-cloud/image/upload/v1630582448/oowojgn4lagybkvv20jb.jpg" width="200px" height="200px" alt="">
+<!--        за всеки един p (picture) : подаваме колекция pictures и закачаме за th:src -> всеки един picture-->
+        <img th:each="p : ${pictures}" th:src="${p}" width="200px" height="200px" alt="">
     </section>
 
-    <!-- <script th:src="@{/js/weather.js}"></script> -->
+     <script th:src="@{/js/weather.js}"></script>
 </div>
 <!-- Wrapper Ends -->'
 
-<th:block th:include="/fragments/footer" />
+<footer th:replace="fragments/common::footer"></footer>
 </body>
 
 </html>

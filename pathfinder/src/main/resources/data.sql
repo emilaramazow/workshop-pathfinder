@@ -1,48 +1,48 @@
 -- https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto.data-initialization.using-basic-sql-scripts
 
 -- user roles
-INSERT INTO roles (id, name)
+INSERT INTO roles (id, role)
 VALUES (1, 'ADMIN');
-INSERT INTO roles (id, name)
+INSERT INTO roles (id, role)
 VALUES (2, 'MODERATOR');
-INSERT INTO roles (id, name)
+INSERT INTO roles (id, role)
 VALUES (3, 'USER');
 
 -- some test users
-INSERT INTO users (id, age, full_name, level, password, username)
-VALUES (1, 28, 'Admin Adminov', 'ADVANCED', '12345', 'admin');
+INSERT INTO users (id, age, email, full_name, level, password, username)
+VALUES (1, 28, 'admin@pathfinder.com' ,'Admin Adminov', 'ADVANCED', 'f9279baf7f54bcf0b4fd2fc2ae4587e5ee5af8a2427428a654818ce3c5f1bff0ed230c4a1b9a2850', 'admin');
 
-INSERT INTO users (id, age, full_name, level, password, username)
-VALUES (2, 29, 'Moderator Moderatorov', 'INTERMEDIATE', '12345',
+INSERT INTO users (id, age, email, full_name, level, password, username)
+VALUES (2, 29, 'moderator@pathfinder.com', 'Moderator Moderatorov', 'INTERMEDIATE', 'f9279baf7f54bcf0b4fd2fc2ae4587e5ee5af8a2427428a654818ce3c5f1bff0ed230c4a1b9a2850',
         'moderator');
 
-INSERT INTO users (id, age, full_name, level, password, username)
-VALUES (3, 30, 'User Userov', 'BEGINNER', '12345', 'user');
+INSERT INTO users (id, age, email, full_name, level, password, username)
+VALUES (3, 30, 'user@pathfinder.com', 'User Userov', 'BEGINNER', 'f9279baf7f54bcf0b4fd2fc2ae4587e5ee5af8a2427428a654818ce3c5f1bff0ed230c4a1b9a2850', 'user');
 
-INSERT INTO users (id, age, full_name, level, password, username)
-VALUES (4, 33, 'Ivan Ivanov', 'BEGINNER', '12345', 'ivan');
+INSERT INTO users (id, age, email, full_name, level, password, username)
+VALUES (4, 33, 'ivan@ivan.com', 'Ivan Ivanov', 'BEGINNER', 'f9279baf7f54bcf0b4fd2fc2ae4587e5ee5af8a2427428a654818ce3c5f1bff0ed230c4a1b9a2850', 'ivan');
 -- user roles
 -- admin
-INSERT INTO users_roles (`user_entity_id`, `roles_id`)
+INSERT INTO users_roles (`user_id`, `roles_id`)
 VALUES (1, 1);
-INSERT INTO users_roles (`user_entity_id`, `roles_id`)
+INSERT INTO users_roles (`user_id`, `roles_id`)
 VALUES (1, 2);
-INSERT INTO users_roles (`user_entity_id`, `roles_id`)
+INSERT INTO users_roles (`user_id`, `roles_id`)
 VALUES (1, 3);
 -- moderator
-INSERT INTO users_roles (`user_entity_id`, `roles_id`)
+INSERT INTO users_roles (`user_id`, `roles_id`)
 VALUES (2, 2);
-INSERT INTO users_roles (`user_entity_id`, `roles_id`)
+INSERT INTO users_roles (`user_id`, `roles_id`)
 VALUES (2, 3);
 -- user
-INSERT INTO users_roles (`user_entity_id`, `roles_id`)
+INSERT INTO users_roles (`user_id`, `roles_id`)
 VALUES (3, 3);
 -- user 2
-INSERT INTO users_roles (`user_entity_id`, `roles_id`)
+INSERT INTO users_roles (`user_id`, `roles_id`)
 VALUES (4, 3);
-INSERT INTO users_roles (`user_entity_id`, `roles_id`)
+INSERT INTO users_roles (`user_id`, `roles_id`)
 VALUES (4, 2);
-INSERT INTO users_roles (`user_entity_id`, `roles_id`)
+INSERT INTO users_roles (`user_id`, `roles_id`)
 VALUES (4, 1);
 
 -- categories
