@@ -16,6 +16,6 @@ public class ApiError {
     private List<String> fieldWithErrors = new ArrayList<>();
 
     public void addFieldWithError(String error) {
-
+        fieldWithErrors.add(error);
     }
 }

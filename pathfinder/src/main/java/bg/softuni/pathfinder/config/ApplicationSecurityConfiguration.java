@@ -41,9 +41,10 @@ public class ApplicationSecurityConfiguration {
                 .and()
                 .logout()
                 .logoutUrl("/users/logout")
-                .logoutSuccessUrl("/")
+                .clearAuthentication(true)
                 .invalidateHttpSession(true)
-                .deleteCookies("JSESSIONID");
+                .deleteCookies("JSESSIONID")
+                .logoutSuccessUrl("/");
 
         return http.build();
     }
