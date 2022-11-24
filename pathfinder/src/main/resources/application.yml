@@ -54,3 +54,14 @@ spring:
 
 #HEROKU PORT:    ->    coming from heroku
 #server.port: ${PORT:8080}:
+
+
+#actuator properties :
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ["*"]
+      base-path: "/admin"
+  server:
+    port: 8081
