@@ -1,6 +1,7 @@
 package bg.softuni.pathfinder.config;
 import bg.softuni.pathfinder.repository.UserRepository;
 import bg.softuni.pathfinder.service.impl.PathfinderUserDetailsService;
+import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,6 +27,8 @@ public class ApplicationSecurityConfiguration {
         http
                 .authorizeRequests()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+                // only to allowing Actuator end-points
+                .requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll()
                 .antMatchers("/", "/about").permitAll()
                 .antMatchers("/users/login", "/users/register").anonymous()
                 .antMatchers("/routes/**").permitAll()
@@ -41,11 +44,10 @@ public class ApplicationSecurityConfiguration {
                 .and()
                 .logout()
                 .logoutUrl("/users/logout")
-                .logoutSuccessUrl("/")
+                .clearAuthentication(true)
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID")
-                .and()
-                .csrf().disable();
+                .logoutSuccessUrl("/");
 
         return http.build();
     }

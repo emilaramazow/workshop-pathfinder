@@ -29,6 +29,13 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+            <version>2.7.5</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/hsqldb/hsqldb -->
         <dependency>
             <groupId>hsqldb</groupId>
@@ -37,11 +44,24 @@
             <scope>test</scope>
         </dependency>
 
+
+<!--        -->
+<!--        USE POSTGRESQL (MVNREPOSITORY) INSTEAD OF MYSQL, BECAUSE HEROKU WORKS WITH POSTGRESQL-->
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.postgresql/postgresql &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.postgresql</groupId>-->
+<!--            <artifactId>postgresql</artifactId>-->
+<!--            <version>42.5.0</version>-->
+<!--        </dependency>-->
+
+
+
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
