@@ -16,13 +16,13 @@ import java.util.Set;
 @Setter
 public class User extends BaseEntity{
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String username;
     @Column(nullable = false)
     private String fullName;
     @Column(nullable = false)
     private String password;
-    @Column
+    @Column(nullable = false, unique = true)
     private String email;
     @Column
     @Min(10)

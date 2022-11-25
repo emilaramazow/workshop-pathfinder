@@ -62,7 +62,12 @@
                     <a href="/about">About</a>
                 </li>
                 <li>
-                    <a href="/users/logout">Logout</a>
+<!--                    <a href="/users/logout">Logout</a>-->
+
+                    <form action="/users/logout" method="post">
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                        <button type="submit">Logout</button>
+                    </form>
                 </li>
             </th:block>
 

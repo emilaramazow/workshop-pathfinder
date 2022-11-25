@@ -8,8 +8,11 @@ import bg.softuni.pathfinder.repository.UserRepository;
 import bg.softuni.pathfinder.service.UserService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -50,5 +53,8 @@ public class UserServiceImpl implements UserService {
                 .orElse(null);
     }
 
+    public User getUserByEmail(String email) {
+        return userRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("User with email " + email + " was not found!"));
+    }
 
 }

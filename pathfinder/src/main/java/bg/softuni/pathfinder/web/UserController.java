@@ -1,8 +1,9 @@
 package bg.softuni.pathfinder.web;
 
 import bg.softuni.pathfinder.model.binding.UserRegisterBindingModel;
+import bg.softuni.pathfinder.model.entity.User;
 import bg.softuni.pathfinder.model.service.UserServiceModel;
-import bg.softuni.pathfinder.model.view.UserViewModel;
+import bg.softuni.pathfinder.model.view.UserProfileViewModel;
 import bg.softuni.pathfinder.service.UserService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @Controller
 @AllArgsConstructor
@@ -62,14 +64,54 @@ public class UserController {
     }
 
 
-    // ще работим с профила на потребителя като задаваме path variable ( {id} ) за да вземем ид-то на потребителя
-    @GetMapping("/profile/{id}")
-    private String profile(@PathVariable Long id, Model model) {
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
 
-        model
-                .addAttribute("user", modelMapper.map(userService.findById(id), UserViewModel.class));
+
+//    // ще работим с профила на потребителя като задаваме path variable ( {id} ) за да вземем ид-то на потребителя
+//    @GetMapping("/profile/{id}")
+//    private String profile(@PathVariable Long id, Model model) {
+//
+//        model
+//                .addAttribute("user", modelMapper.map(userService.findById(id), UserProfileViewModel.class));
+//
+//        return "profile";
+//    }
+
+
+    @GetMapping("/profile")
+    public String profile(Principal principal, Model model) {
+        String email = principal.getName();
+
+        User user = userService.getUserByEmail(email);
+
+        UserProfileViewModel userProfileViewModel = new UserProfileViewModel(
+                email,
+                user.getUsername(),
+                user.getFullName(),
+                user.getAge(),
+                user.getLevel()
+        );
+
+        model.addAttribute("user", userProfileViewModel);
 
         return "profile";
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
