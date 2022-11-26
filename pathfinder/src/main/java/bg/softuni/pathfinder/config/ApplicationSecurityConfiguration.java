@@ -31,6 +31,7 @@ public class ApplicationSecurityConfiguration {
                 .requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll()
                 .antMatchers("/", "/about").permitAll()
                 .antMatchers("/users/login", "/users/register").anonymous()
+                .antMatchers("/users/profile").authenticated()
                 .antMatchers("/routes/**").permitAll()
                 .antMatchers("/**").authenticated()
                 .and()
