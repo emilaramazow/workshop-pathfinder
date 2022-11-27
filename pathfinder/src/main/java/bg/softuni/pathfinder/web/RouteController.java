@@ -42,7 +42,11 @@ public class RouteController {
     }
 
     @GetMapping("/details/{id}")
-    public String details(@PathVariable Long id, Model model) {
+    public String details(@PathVariable("id") Long id, Model model) {
+
+        // take getRouteById from RouteService (SECOND WAY to show route by ID)
+        // RouteDetailsViewModel route = routeService.getRouteById(id);
+
         model.addAttribute("route", routeService.findRouteById(id));
 
         return "route-details";

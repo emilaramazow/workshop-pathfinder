@@ -51,11 +51,26 @@ public class RouteServiceImpl implements RouteService {
                 .collect(Collectors.toList());
     }
 
+
+    // SECOND WAY for findAllRoutesView
+//    public List<RouteViewModel> findAllRoutes() {
+//        return routeRepository
+//                .findAll()
+//                .stream()
+//                .map(route -> new RouteViewModel(
+//                        route.getId(),
+//                        route.getName(),
+//                        route.getDescription(),
+//                        route.getPictures().stream().findFirst().get().getUrl()
+//                )).collect(Collectors.toList());
+//    }
+
+
     @Override
     public void addNewRoute(RouteServiceModel routeServiceModel) {
         Route route = modelMapper.map(routeServiceModel, Route.class);
         //TODO : current suer
-       // route.setAuthor(userService.findCurrentLoginUserEntity());
+        // route.setAuthor(userService.findCurrentLoginUserEntity());
 
         route.setCategories(routeServiceModel
                 .getCategories()
@@ -65,6 +80,27 @@ public class RouteServiceImpl implements RouteService {
 
         routeRepository.save(route);
     }
+
+
+
+    // SECOND WAY to show route with ID
+//    public RouteDetailsViewModel getRouteById(Long id) {
+//        return routeRepository
+//                .findById(id)
+//                .map(route -> new RouteDetailsViewModel(
+//                        route.getId(),
+//                        route.getGpxCoordinates(),
+//                        route.getLevel().name(),
+//                        route.getName(),
+//                        route.getDescription(),
+//                        route.getAuthor().getFullName(),
+//                        route.getVideoURL(),
+//                        route.getPictures()
+//                                .stream().map(Picture::getUrl).collect(Collectors.toList())
+//                )).orElseThrow(ObjectNotFoundException::new);
+//    }
+
+
 
     @Transactional
     @Override
